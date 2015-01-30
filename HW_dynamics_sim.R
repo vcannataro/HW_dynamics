@@ -24,9 +24,15 @@ Offspring.Genotype <- function(){
   if(xor(parent.1==1 & parent.2==2 , parent.1==2 & parent.2==1)){
     output <- sample(size=1,x=c(1,2),prob=c(0.5,0.5))
   }
-  
-  
-  
+  if(parent.1==2 & parent.2==2){
+    output <- sample(size=1,x=c(1,2,3),prob=c(0.25,0.5,0.25))
+  }
+  if(xor(parent.1==1 & parent.2==3 , parent.1==3 & parent.2==1)){
+    output <- 2
+  }
+  if(xor(parent.1==2 & parent.2==3 , parent.1==3 & parent.2==2)){
+    output <- sample(size=1,x=c(2,3),prob=c(0.5,0.5))
+  }
   return(output)
 }
 
@@ -42,22 +48,23 @@ for(i in 2:Generations){
                                                 (evolution.matrix[2,i-1]/Total.pop.size),
                                                 (evolution.matrix[3,i-1]/Total.pop.size)))
     if(parent.1==1){
-      parent.2 <- sample(size=1,x=c(1,2,3),prob=c((evolution.matrix[1,i-1]-1/Total.pop.size),
+      parent.2 <- sample(size=1,x=c(1,2,3),prob=c(((evolution.matrix[1,i-1]-1)/Total.pop.size),
                                                   (evolution.matrix[2,i-1]/Total.pop.size),
                                                   (evolution.matrix[3,i-1]/Total.pop.size)))
     }
     if(parent.1==2){
       parent.2 <- sample(size=1,x=c(1,2,3),prob=c((evolution.matrix[1,i-1]/Total.pop.size),
-                                                  (evolution.matrix[2,i-1]-1/Total.pop.size),
+                                                  ((evolution.matrix[2,i-1]-1)/Total.pop.size),
                                                   (evolution.matrix[3,i-1]/Total.pop.size)))
     }
     if(parent.1==3){
       parent.2 <- sample(size=1,x=c(1,2,3),prob=c((evolution.matrix[1,i-1]/Total.pop.size),
                                                   (evolution.matrix[2,i-1]/Total.pop.size),
-                                                  (evolution.matrix[3,i-1]-1/Total.pop.size)))
+                                                  ((evolution.matrix[3,i-1]-1)/Total.pop.size)))
     }
     
-    
+    offspring <- Offspring.Genotype()
+    evolution.matrix[offspring,i] <- evolution.matrix[offspring,i]+1
     
     
   }
@@ -65,7 +72,6 @@ for(i in 2:Generations){
   
   
 }
-
 
 
 
