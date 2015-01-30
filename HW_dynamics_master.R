@@ -6,15 +6,19 @@
 
 setwd("~/GitHub/HW_dynamics")
 
-#Number of each genotype in the population initially 
-AA <- 1000
-Aa <- 1000
-aa <- 1000
+#Number of each genotype in the population initially:
+AA <- 10000
+Aa <- 0
+aa <- 10000
 
-Generations <- 200
+#Generations to run the simulation:
+Generations <- 50
 
-A.to.a <- 1e-3
-a.to.A <- 1e-5
+
+#Chance of allele mutations per generation:
+A.to.a <- 0
+a.to.A <- 0
 
 source("HW_dynamics_sim.R")
+
 

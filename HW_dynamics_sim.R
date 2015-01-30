@@ -4,6 +4,9 @@
 #WORK IN PROGRESS
 ##################
 
+###In the code genotype choices are sometimes represented by numbers
+###AA=1, Aa=2, aa=3
+
 #The total population size of the individuals
 Total.pop.size <- AA+Aa+aa
 
@@ -132,9 +135,27 @@ lines(evolution.matrix[3,]/Total.pop.size,lwd=5,col="blue")
 legend("topleft", c("AA","Aa","aa"),col=c("black","red","blue") ,lwd=5 )
 
 
-# p <- (evolution.matrix[1,Generations] + 0.5*evolution.matrix[2,Generations])/Total.pop.size
-# q <- (evolution.matrix[3,Generations] + 0.5*evolution.matrix[2,Generations])/Total.pop.size
+p.initial <- (evolution.matrix[1,1] + 0.5*evolution.matrix[2,1])/Total.pop.size
+q.initial <- (evolution.matrix[3,1] + 0.5*evolution.matrix[2,1])/Total.pop.size
+
+AA.expected <- p.initial^2
+Aa.expected <- 2*p.initial*q.initial
+aa.expected <- q.initial^2
+
+p.avg <- (mean(evolution.matrix[1,10:Generations]) + 0.5*mean(evolution.matrix[2,10:Generations]))/Total.pop.size
+q.avg <- (mean(evolution.matrix[3,10:Generations]) + 0.5*mean(evolution.matrix[2,10:Generations]))/Total.pop.size
+
+AA.avg <- round((mean(evolution.matrix[1,10:Generations]))/Total.pop.size,4)
+Aa.avg <- round((mean(evolution.matrix[2,10:Generations]))/Total.pop.size,4)
+aa.avg <- round((mean(evolution.matrix[3,10:Generations]))/Total.pop.size,4)
+
 # 
-# print(paste("final p=",p))
-# print(paste("final q=",q))
-# print(paste("p+q=",p+q))
+print(paste("Expected AA=",AA.expected,"|","Expected Aa=",Aa.expected,"|","Expected aa=",aa.expected))
+
+print(paste("Average AA=",AA.avg,"|","Average Aa=",Aa.avg,"|","Average aa=",aa.avg))
+
+# print(paste("Final p^2=",p^2,"|","Final 2*p*q=",2*p*q,"|","Final q^2=",q^2))
+
+
+
+
