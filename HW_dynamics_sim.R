@@ -15,7 +15,7 @@ evolution.matrix[,1] <- c(AA,Aa,aa) #initialize the matrix
 
 
 
-##Loop that simulations evolution. Children choose their parents, allele combinations after that are random
+##Loop that simulates evolution. Children choose their parents, allele combinations after that are random
 for(i in 2:Generations){
   for(j in 1:Total.pop.size){
     

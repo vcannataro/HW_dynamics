@@ -1,0 +1,17 @@
+{
+    "contents" : "################\n#H-W population dynamics simulation\n#Author: Vincent Cannataro\n#WORK IN PROGRESS\n################\n\n#Number of each genotype in the population initially \nAA <- 1000\nAa <- 1000\naa <- 1000\n\nGenerations <- 100 \n\n",
+    "created" : 1422582673478.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "380169066",
+    "id" : "5E015CE6",
+    "lastKnownWriteTime" : 1422584967,
+    "path" : "~/GitHub/HW_dynamics/HW_dynamics_master.R",
+    "project_path" : "HW_dynamics_master.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

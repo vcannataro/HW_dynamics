@@ -1,0 +1,16 @@
+{
+    "contents" : "###Genetic Drift Simulation\n\nN <- 20\ntot.allele <- 2*N\ngenerations <- 100\np <- .2\nq <- 1-p\n\nA1 <- p*tot.allele\nA2 <- q*tot.allele\n\ndrift <- matrix(data=NA, nrow=tot.allele, ncol=generations)\ndrift[1:A1,1] <- \"A1\"\ndrift[A1+1:(tot.allele-A1),1] <- \"A2\"\n\nfor (i in 2:generations){\n  for(j in 1:tot.allele){ \n    drift[j,i] <- drift[sample(1:tot.allele, size=1, replace=TRUE),i-1]\n  }\n}\n\np.tot <- rep(p, generations)\nq.tot <- rep(q, generations)\n\n\nfor (g in 2:generations){\n  p.tot[g] <- (length(which(drift[,g] == \"A1\")))/tot.allele\n}\n\nfor (f in 2:generations){\n  q.tot[f] <- (length(which(drift[,f] == \"A2\")))/tot.allele \n}\n\nplot(p.tot, type=\"l\", ylim=c(0,1), ylab=\"Allele Frequency\", xlab=\"Generation\", col=\"orange\")\nlines(q.tot, col=\"blue\")",
+    "created" : 1422582982002.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4137894269",
+    "id" : "529A9D18",
+    "lastKnownWriteTime" : 1346698401,
+    "path" : "C:/Users/Vincent/Dropbox/University of Florida/PopulationGenetics/Genetic_Drift_Sim.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

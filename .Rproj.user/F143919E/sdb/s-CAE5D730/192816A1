@@ -1,0 +1,17 @@
+{
+    "contents" : "##################\n#Code that controls evolution\n#Author: Vincent Cannataro\n#WORK IN PROGRESS\n##################\n\n#The total population size of the individuals\nTotal.pop.size <- AA+Aa+aa\n\n#Matrix to keep track of genotypes over the generations\nevolution.matrix <- matrix(nrow=3,ncol=Generations)\nrownames(evolution.matrix) <- c(\"AA\",\"Aa\",\"aa\")\ncolnames(evolution.matrix) <- paste(\"Generation\",1:Generations)\nevolution.matrix[,1] <- c(AA,Aa,aa) #initialize the matrix\n\n\n\n##Loop that simulates evolution. Children choose their parents, allele combinations after that are random\nfor(i in 2:Generations){\n  for(j in 1:Total.pop.size){\n    \n    \n    \n    \n  }\n  \n  \n  \n}\n\n\n\n\n\n\n",
+    "created" : 1422584242675.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "230214102",
+    "id" : "192816A1",
+    "lastKnownWriteTime" : 1422585733,
+    "path" : "~/GitHub/HW_dynamics/HW_dynamics_sim.R",
+    "project_path" : "HW_dynamics_sim.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
