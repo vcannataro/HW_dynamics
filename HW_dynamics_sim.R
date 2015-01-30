@@ -69,11 +69,21 @@ for(i in 2:Generations){
     
   }
   
-  
+  print(paste("Generation:",i,"out of",Generations))
   
 }
 
 
 
+plot(evolution.matrix[1,]/Total.pop.size,type="l",lwd=5,ylim=c(0,1),ylab="Genotype percent of total population",xlab="Generation")
+lines(evolution.matrix[2,]/Total.pop.size,lwd=5,col="red")
+lines(evolution.matrix[3,]/Total.pop.size,lwd=5,col="blue")
+legend("topleft", c("AA","Aa","aa"),col=c("black","red","blue") ,lwd=5 )
 
 
+# p <- (evolution.matrix[1,Generations] + 0.5*evolution.matrix[2,Generations])/Total.pop.size
+# q <- (evolution.matrix[3,Generations] + 0.5*evolution.matrix[2,Generations])/Total.pop.size
+# 
+# print(paste("final p=",p))
+# print(paste("final q=",q))
+# print(paste("p+q=",p+q))
