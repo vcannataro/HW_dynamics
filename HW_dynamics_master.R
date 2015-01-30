@@ -9,7 +9,7 @@ setwd("~/GitHub/HW_dynamics")
 #Number of each genotype in the population initially:
 AA <- 10000
 Aa <- 0
-aa <- 10000
+aa <- 1000
 
 #Generations to run the simulation:
 Generations <- 50
