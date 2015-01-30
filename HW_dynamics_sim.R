@@ -13,7 +13,7 @@ rownames(evolution.matrix) <- c("AA","Aa","aa")
 colnames(evolution.matrix) <- paste("Generation",1:Generations)
 evolution.matrix[,1] <- c(AA,Aa,aa) #initialize the matrix
 
-
+#Function saying, given your two parents genotypes draw your resultant genotype
 Offspring.Genotype <- function(){
   if(parent.1==1 & parent.2==1){
     output <- 1
@@ -33,14 +33,62 @@ Offspring.Genotype <- function(){
   if(xor(parent.1==2 & parent.2==3 , parent.1==3 & parent.2==2)){
     output <- sample(size=1,x=c(2,3),prob=c(0.5,0.5))
   }
+  
+  #Did a mutation happen? 
+  
+  if(output==1){
+    #Here, we flip 2 coins and see if each allele was mutated
+    no.of.mut.events.1 <- rbinom(1,1,A.to.a) 
+    no.of.mut.events.2 <- rbinom(1,1,A.to.a)
+    if(no.of.mut.events.1==1 & no.of.mut.events.2==1){
+      output <- 3
+    }
+    if(xor((no.of.mut.events.1==1 & no.of.mut.events.2==0),(no.of.mut.events.1==0 & no.of.mut.events.2==1))){
+      output <- 2
+    }
+    return(output)
+  }
+  if(output==2){
+    
+    #Here, we flip 2 coins and see if each allele was mutated in the heterozygote 
+    no.of.mut.events.1 <- rbinom(1,1,A.to.a) 
+    no.of.mut.events.2 <- rbinom(1,1,a.to.A)
+    
+    if(no.of.mut.events.1==1 & no.of.mut.events.2==1){
+      output <- 2 #If both alleles are mutated in the heterozygote, it's still a heterozygote! 
+    }
+    if(no.of.mut.events.1==1 & no.of.mut.events.2==0){
+      output <- 3 
+    }
+    if(no.of.mut.events.1==0 & no.of.mut.events.2==1){
+      output <- 1
+    }
+    return(output)
+  }
+  if(output==3){
+    #Here, we flip 2 coins and see if each allele was mutated
+    no.of.mut.events.1 <- rbinom(1,1,a.to.A) 
+    no.of.mut.events.2 <- rbinom(1,1,a.to.A)
+    if(no.of.mut.events.1==1 & no.of.mut.events.2==1){
+      output <- 1
+    }
+    if(xor((no.of.mut.events.1==1 & no.of.mut.events.2==0),(no.of.mut.events.1==0 & no.of.mut.events.2==1))){
+      output <- 2
+    }
+    return(output)
+    
+    
+  }
+  
   return(output)
+  
 }
 
 
 
 
 
-##Loop that simulates evolution. Children choose their parents, allele combinations after that are random
+##Loop that simulates evolution. Children choose their parents, allele combinations after that are based on parent genotype combinations
 for(i in 2:Generations){
   for(j in 1:Total.pop.size){
     
@@ -68,6 +116,9 @@ for(i in 2:Generations){
     
     
   }
+  
+  
+  
   
   print(paste("Generation:",i,"out of",Generations))
   

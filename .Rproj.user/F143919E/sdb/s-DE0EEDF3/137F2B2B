@@ -1,0 +1,17 @@
+{
+    "contents" : "test<-rep(NA,1e5)\n\nfor(i in 1:1e5){\n  test[i] <- Offspring.Genotype()\n}\n\nsummary(test)\nwhich(test==2)\n",
+    "created" : 1422642580748.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "569115079",
+    "id" : "137F2B2B",
+    "lastKnownWriteTime" : 27303570963497028,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

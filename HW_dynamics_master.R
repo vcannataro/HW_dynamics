@@ -13,7 +13,8 @@ aa <- 1000
 
 Generations <- 200
 
-
+A.to.a <- 1e-3
+a.to.A <- 1e-5
 
 source("HW_dynamics_sim.R")
 
