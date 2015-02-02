@@ -7,7 +7,7 @@
 setwd("~/GitHub/HW_dynamics")
 
 #Number of each genotype in the population initially:
-AA <- 10000
+AA <- 1000
 Aa <- 0
 aa <- 1000
 

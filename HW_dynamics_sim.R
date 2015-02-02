@@ -150,9 +150,14 @@ Aa.avg <- round((mean(evolution.matrix[2,10:Generations]))/Total.pop.size,5)
 aa.avg <- round((mean(evolution.matrix[3,10:Generations]))/Total.pop.size,5)
 
 # 
+
+print(paste("Initial 'p':",p.initial))
+print(paste("Initial 'q':",q.initial))
+
+
 print(paste("Expected AA=",AA.expected,"|","Expected Aa=",Aa.expected,"|","Expected aa=",aa.expected))
 
-print(paste("Average AA=",AA.avg,"|","Average Aa=",Aa.avg,"|","Average aa=",aa.avg))
+print(paste("Average AA=",AA.avg,"|","Average Aa=",Aa.avg,"|","Average aa=",aa.avg,"      *(averages after 10 generations)"))
 
 # print(paste("Final p^2=",p^2,"|","Final 2*p*q=",2*p*q,"|","Final q^2=",q^2))
 
