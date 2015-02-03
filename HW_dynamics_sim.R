@@ -10,6 +10,8 @@
 #The total population size of the individuals
 Total.pop.size <- AA+Aa+aa
 
+Total.fitness <- AA.fit+Aa.fit+aa.fit
+
 #Matrix to keep track of genotypes over the generations
 evolution.matrix <- matrix(nrow=3,ncol=Generations, data=0)
 rownames(evolution.matrix) <- c("AA","Aa","aa")
@@ -95,23 +97,23 @@ Offspring.Genotype <- function(){
 for(i in 2:Generations){
   for(j in 1:Total.pop.size){
     
-    parent.1 <- sample(size=1,x=c(1,2,3),prob=c((evolution.matrix[1,i-1]/Total.pop.size),
-                                                (evolution.matrix[2,i-1]/Total.pop.size),
-                                                (evolution.matrix[3,i-1]/Total.pop.size)))
+    parent.1 <- sample(size=1,x=c(1,2,3),prob=c(((evolution.matrix[1,i-1]*AA.fit)/(Total.pop.size *Total.fitness)),
+                                                ((evolution.matrix[2,i-1]*Aa.fit)/(Total.pop.size*Total.fitness)),
+                                                ((evolution.matrix[3,i-1]*aa.fit)/(Total.pop.size*Total.fitness))))
     if(parent.1==1){
-      parent.2 <- sample(size=1,x=c(1,2,3),prob=c(((evolution.matrix[1,i-1]-1)/Total.pop.size),
-                                                  (evolution.matrix[2,i-1]/Total.pop.size),
-                                                  (evolution.matrix[3,i-1]/Total.pop.size)))
+      parent.2 <- sample(size=1,x=c(1,2,3),prob=c((((evolution.matrix[1,i-1]-1)*AA.fit)/(Total.pop.size *Total.fitness)),
+                                                  ((evolution.matrix[2,i-1]*Aa.fit)/(Total.pop.size*Total.fitness)),
+                                                  ((evolution.matrix[3,i-1]*aa.fit)/(Total.pop.size*Total.fitness))))
     }
     if(parent.1==2){
-      parent.2 <- sample(size=1,x=c(1,2,3),prob=c((evolution.matrix[1,i-1]/Total.pop.size),
-                                                  ((evolution.matrix[2,i-1]-1)/Total.pop.size),
-                                                  (evolution.matrix[3,i-1]/Total.pop.size)))
+      parent.2 <- sample(size=1,x=c(1,2,3),prob=c(((evolution.matrix[1,i-1]*AA.fit)/(Total.pop.size *Total.fitness)),
+                                                  (((evolution.matrix[2,i-1]-1)*Aa.fit)/(Total.pop.size*Total.fitness)),
+                                                  ((evolution.matrix[3,i-1]*aa.fit)/(Total.pop.size*Total.fitness))))
     }
     if(parent.1==3){
-      parent.2 <- sample(size=1,x=c(1,2,3),prob=c((evolution.matrix[1,i-1]/Total.pop.size),
-                                                  (evolution.matrix[2,i-1]/Total.pop.size),
-                                                  ((evolution.matrix[3,i-1]-1)/Total.pop.size)))
+      parent.2 <- sample(size=1,x=c(1,2,3),prob=c(((evolution.matrix[1,i-1]*AA.fit)/(Total.pop.size *Total.fitness)),
+                                                  ((evolution.matrix[2,i-1]*Aa.fit)/(Total.pop.size*Total.fitness)),
+                                                  (((evolution.matrix[3,i-1]-1)*aa.fit)/(Total.pop.size*Total.fitness))))
     }
     
     offspring <- Offspring.Genotype()
@@ -159,7 +161,6 @@ print(paste("Expected AA=",AA.expected,"|","Expected Aa=",Aa.expected,"|","Expec
 
 print(paste("Average AA=",AA.avg,"|","Average Aa=",Aa.avg,"|","Average aa=",aa.avg,"      *(averages after 10 generations)"))
 
-# print(paste("Final p^2=",p^2,"|","Final 2*p*q=",2*p*q,"|","Final q^2=",q^2))
 
 
 
