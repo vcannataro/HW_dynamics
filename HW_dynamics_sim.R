@@ -137,19 +137,19 @@ lines(evolution.matrix[3,]/Total.pop.size,lwd=5,col="blue")
 legend("topleft", c("AA","Aa","aa"),col=c("black","red","blue") ,lwd=5 )
 
 
-p.initial <- (evolution.matrix[1,1] + 0.5*evolution.matrix[2,1])/Total.pop.size
-q.initial <- (evolution.matrix[3,1] + 0.5*evolution.matrix[2,1])/Total.pop.size
+p.initial <- (evolution.matrix[1,1]*2 + evolution.matrix[2,1])/(Total.pop.size*2)
+q.initial <- (evolution.matrix[3,1]*2 + evolution.matrix[2,1])/(Total.pop.size*2)
 
 AA.expected <- round(p.initial^2,5)
 Aa.expected <- round(2*p.initial*q.initial,5)
 aa.expected <- round(q.initial^2,5)
 
-p.avg <- (mean(evolution.matrix[1,10:Generations]) + 0.5*mean(evolution.matrix[2,10:Generations]))/Total.pop.size
-q.avg <- (mean(evolution.matrix[3,10:Generations]) + 0.5*mean(evolution.matrix[2,10:Generations]))/Total.pop.size
+p.avg <- (mean(evolution.matrix[1,2:Generations]) + 0.5*mean(evolution.matrix[2,2:Generations]))/Total.pop.size
+q.avg <- (mean(evolution.matrix[3,2:Generations]) + 0.5*mean(evolution.matrix[2,2:Generations]))/Total.pop.size
 
-AA.avg <- round((mean(evolution.matrix[1,10:Generations]))/Total.pop.size,5)
-Aa.avg <- round((mean(evolution.matrix[2,10:Generations]))/Total.pop.size,5)
-aa.avg <- round((mean(evolution.matrix[3,10:Generations]))/Total.pop.size,5)
+AA.avg <- round((mean(evolution.matrix[1,2:Generations]))/Total.pop.size,5)
+Aa.avg <- round((mean(evolution.matrix[2,2:Generations]))/Total.pop.size,5)
+aa.avg <- round((mean(evolution.matrix[3,2:Generations]))/Total.pop.size,5)
 
 # 
 
@@ -159,7 +159,7 @@ print(paste("Initial 'q':",q.initial))
 
 print(paste("Expected AA=",AA.expected,"|","Expected Aa=",Aa.expected,"|","Expected aa=",aa.expected))
 
-print(paste("Average AA=",AA.avg,"|","Average Aa=",Aa.avg,"|","Average aa=",aa.avg,"      *(averages after 10 generations)"))
+print(paste("Average AA=",AA.avg,"|","Average Aa=",Aa.avg,"|","Average aa=",aa.avg,"      *(averages after first generation)"))
 
 
 
