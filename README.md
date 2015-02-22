@@ -13,3 +13,5 @@ I'm taking a class on teaching careers/methods and we're discussing classes we w
 For this exercise I'm picturing students systematically violating Hardy-Weinberg assumptions and seeing/learning what happens. For instance, imagine setting an initial population size low and seeing the "fortuitous extinction of genes" just due to random sampling of genotypes- you just discovered drift! 
 
 This is an experiment in and of itself. 
+
+More info here: http://vcannataro.com/2015/02/22/generating-biology/
