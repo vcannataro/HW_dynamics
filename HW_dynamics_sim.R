@@ -131,9 +131,9 @@ for(i in 2:Generations){
 
 
 
-plot(evolution.matrix[1,]/Total.pop.size,type="l",lwd=5,ylim=c(0,1),ylab="Genotype percent of total population",xlab="Generation")
-lines(evolution.matrix[2,]/Total.pop.size,lwd=5,col="red")
-lines(evolution.matrix[3,]/Total.pop.size,lwd=5,col="blue")
+plot((evolution.matrix[1,]*100)/Total.pop.size,type="l",lwd=5,ylim=c(0,100),ylab="Genotype percent of total population",xlab="Generation")
+lines((evolution.matrix[2,]*100)/Total.pop.size,lwd=5,col="red")
+lines((evolution.matrix[3,]*100)/Total.pop.size,lwd=5,col="blue")
 legend("topleft", c("AA","Aa","aa"),col=c("black","red","blue") ,lwd=5 )
 
 
